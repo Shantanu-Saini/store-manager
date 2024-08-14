@@ -13,10 +13,10 @@ function LoginPage() {
         password: "",
     })
 
-    const handleLoginSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+    const handleLoginSubmit = async (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         try {
-            const response = axios.post("api/user/login", user);
+            const response = await axios.post("api/user/login", user);
             console.log("Login Success", response);
             router.push('/home');
         } catch (error: any) {

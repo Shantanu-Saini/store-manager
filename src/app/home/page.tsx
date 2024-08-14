@@ -6,7 +6,7 @@ function HomePage() {
   const router = useRouter();
   const handleLogout = async () => {
     try {
-      const response = axios.post('/api/user/logout')
+      const response = await axios.post('/api/user/logout')
       router.push("/login");
       console.log("Logout Successful", response);
     } catch (error: any) {
