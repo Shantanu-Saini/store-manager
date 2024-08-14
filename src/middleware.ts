@@ -23,5 +23,6 @@ export const config = {
         '/home',
         '/login',
         '/signup',
+        '/profile',
     ]
 }
