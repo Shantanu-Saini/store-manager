@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 function Navbar() {
     return (
         <div className="flex items-center justify-between px-6 py-2 top-0 left-0 z-50 sticky w-full">
@@ -7,7 +9,7 @@ function Navbar() {
             </div>
             <div className="flex items-center justify-between space-x-3">
                 <button>Theme</button>
-                <button>Login/Signup</button>
+                <Link href='/login'><button>Login/Signup</button></Link>
             </div>
         </div>
     )

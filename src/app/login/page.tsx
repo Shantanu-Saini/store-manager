@@ -18,7 +18,7 @@ function LoginPage() {
         try {
             const response = axios.post("api/user/login", user);
             console.log("Login Success", response);
-            router.push('/');
+            router.push('/home');
         } catch (error: any) {
             console.log("Login Failed", error.response?.data?.message || error.message);
             toast.error(error.response?.data?.message || "Login failed");
@@ -38,7 +38,7 @@ function LoginPage() {
                     onChange={(e) => setUser({ ...user, password: e.target.value })} />
                 <br />
                 <button type="submit">Login</button>
-                <p>Don't have an account? <Link href="/signup">Register</Link></p>
+                <p>Don't have an account? <Link href="/signup">Signup</Link></p>
             </form>
         </div>
     )
