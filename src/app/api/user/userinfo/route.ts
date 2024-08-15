@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     try {
         const userId = await getTokenData(request);
         const user = await UserModel.findById(userId);
-        console.log("userInfo" + user);
+        // console.log("userInfo" + user);
         return NextResponse.json(
             {
                 message: "user data found",

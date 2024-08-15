@@ -16,7 +16,7 @@ function ProfilePage() {
         const getUserInfo = async () => {
             try {
                 const response = await axios.get('/api/user/userinfo');
-                console.log(response.data);
+                // console.log(response.data);
                 setUserInfo(response.data.userData);
             } catch (error) {
                 console.error("Error fetching user data", error);
@@ -31,6 +31,9 @@ function ProfilePage() {
             const response = await axios.post('/api/user/logout')
             router.push("/login");
             console.log("Logout Successful", response);
+
+            // Reload the page after logout to update the Navbar
+            window.location.reload();
         } catch (error: any) {
             console.log(error.message, "Error in Logging Out");
         }
