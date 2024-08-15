@@ -1,7 +1,8 @@
 "use client";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { getUserInfo } from '@/helpers/getUserInfo';
 
 interface UserInfo {
     name: string;
@@ -13,16 +14,14 @@ function ProfilePage() {
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
     useEffect(() => {
-        const getUserInfo = async () => {
-            try {
-                const response = await axios.get('/api/user/userinfo');
-                // console.log(response.data);
-                setUserInfo(response.data.userData);
-            } catch (error) {
-                console.error("Error fetching user data", error);
+        const fetchUser = async () => {
+            const user: any = await getUserInfo();
+            if (user) {
+                setUserInfo(user);
             }
         };
-        getUserInfo()
+
+        fetchUser();
     }, [])
 
     const router = useRouter();
