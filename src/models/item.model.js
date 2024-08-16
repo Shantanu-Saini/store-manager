@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const itemSchema = mongoose.Schema({
+const itemSchema = new mongoose.Schema({
     ownerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -18,39 +18,51 @@ const itemSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    initialQuantity: {
+        type: Number,
+        required: true
+    },
+    totalCostPrice: {
+        type: Number,
+        required: true
+    },
     mrp: {
+        type: Number,
+        required: true
+    },
+    sellingPrice: {
+        type: Number,
+        required: true
+    },
+    soldQuantity: {
+        type: Number,
+        default: 0
+    },
+    totalSellingPrice: {
+        type: Number,
+        default: 0
+    },
+    totalProfit: {
+        type: Number,
+        default: 0
+    },
+    discountAmount: {
+        type: Number,
+        default: 0
+    },
+    remainingQuantity: {
         type: Number,
         required: true
     },
     dateOfBuying: {
         type: Date,
         required: true,
-        default: Date.now,
+        default: Date.now
     },
     expiryDate: {
         type: Date,
-        required: false,
-    },
-    initialQuantity: {
-        type: Number,
-        required: true
-    },
-    remainingQuantity: {
-        type: Number,
-        required: true,
-    },
-    soldQuantity: {
-        type: Number,
-        default: 0,
-    },
-    totalSellingPrice: {
-        type: Number,
-        default: 0,
-    },
-    totalProfit: {
-        type: Number,
-        default: 0,
-    },
+        required: false
+    }
 }, { timestamps: true });
 
 const ItemModel = mongoose.models.Item || mongoose.model("Item", itemSchema);

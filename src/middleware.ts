@@ -5,9 +5,9 @@ export function middleware(request: NextRequest) {
     const isPublicPath = path === '/login' || path === '/signup';
     const token = request.cookies.get("token")?.value || ''
 
-    // user has token and trying to access login or signup it should redirected to home page
+    // user has token and trying to access login or signup it should redirected to dashboard page
     if (isPublicPath && token) {
-        return NextResponse.redirect(new URL('/home', request.nextUrl));
+        return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
     }
 
     // if user doesnt have token and trying to access protected paths(eg: profile, dashboard) it should redirected to login first
@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
 // protected paths
 export const config = {
     matcher: [
-        '/home',
+        '/dashboard',
         '/login',
         '/signup',
         '/profile',

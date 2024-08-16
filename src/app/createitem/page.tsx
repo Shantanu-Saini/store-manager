@@ -8,14 +8,14 @@ const CreateItemPage: React.FC = () => {
     const [itemData, setItemData] = useState({
         distributorName: "",
         name: "",
-        costPrice: 0,
-        mrp: 0,
+        costPrice: "",  // storing as string
+        mrp: "",  // storing as string
+        initialQuantity: "",  // storing as string
         dateOfBuying: "",
-        quantity: 0,
         expiryDate: ""
     });
 
-    const [userId, setUserId] = useState<string | null>(null); // State to hold the user's _id
+    const [userId, setUserId] = useState<string | null>(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -28,10 +28,10 @@ const CreateItemPage: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setItemData({
-            ...itemData,
-            [name]: name === 'costPrice' || name === 'mrp' || name === 'quantity' ? parseFloat(value) : value,
-        });
+        setItemData((prevData) => ({
+            ...prevData,
+            [name]: value, // No conversion here; store as string
+        }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -45,22 +45,24 @@ const CreateItemPage: React.FC = () => {
         const dataToSubmit = {
             ...itemData,
             ownerId: userId,
-            remainingQuantity: itemData.quantity,
-            initialQuantity: itemData.quantity,
+            costPrice: parseFloat(itemData.costPrice),  // Convert to number
+            mrp: parseFloat(itemData.mrp),  // Convert to number
+            initialQuantity: parseInt(itemData.initialQuantity, 10), // Convert to number
         };
+        // console.log(dataToSubmit);
 
         try {
             const response = await axios.post("/api/user/createitem", dataToSubmit);
             console.log("Create Item success:", response.data.message);
-            // router.push("/dashboard");
+            router.push("/dashboard");
         } catch (error: any) {
-            console.log("Create Item Failed", error.response?.data.message);
+            console.log("Create Item Failed", error.response?.data?.message || "Unknown error");
         }
     };
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-            <h1 className="text-xl font-semibold mb-4">Add New Item</h1>
+            <h1 className="text-xl font-semibold mb-4">Buy New Item</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Distributor Name</label>
@@ -87,9 +89,9 @@ const CreateItemPage: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">Cost Price</label>
+                    <label className="block text-sm font-medium text-gray-700">Cost Price (per item)</label>
                     <input
-                        type="number"
+                        type="text"
                         name="costPrice"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
                         value={itemData.costPrice}
@@ -99,12 +101,24 @@ const CreateItemPage: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">MRP</label>
+                    <label className="block text-sm font-medium text-gray-700">MRP (per item)</label>
                     <input
-                        type="number"
+                        type="text"
                         name="mrp"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
                         value={itemData.mrp}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">Total Quantity</label>
+                    <input
+                        type="text"
+                        name="initialQuantity"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+                        value={itemData.initialQuantity}
                         onChange={handleChange}
                         required
                     />
@@ -117,18 +131,6 @@ const CreateItemPage: React.FC = () => {
                         name="dateOfBuying"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
                         value={itemData.dateOfBuying}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">Quantity</label>
-                    <input
-                        type="number"
-                        name="quantity"
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
-                        value={itemData.quantity}
                         onChange={handleChange}
                         required
                     />
