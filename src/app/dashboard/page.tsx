@@ -1,15 +1,20 @@
 "use client";
 import axios from "axios";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import ItemCard from "@/components/ItemCard";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 interface Item {
   _id: string;
   name: string;
-  costPrice: number;
+  mrp: number;
   initialQuantity: number;
+  dateOfBuying: string;
+  expiryDate?: string;
+  distributorName: string;
+  remainingQuantity: number;
 }
-
 
 function Dashboard() {
   const [itemInfo, setItemInfo] = useState<Item[]>([]);
@@ -19,7 +24,6 @@ function Dashboard() {
       try {
         const response = await axios.get('/api/user/iteminfo');
         setItemInfo(response.data);
-        // console.log("Fetched Items:", response.data);
       } catch (error) {
         console.error("Error fetching item info:", error);
       }
@@ -28,30 +32,39 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <Link href='/profile'>Profile</Link>
+    <div className="min-h-screen max-h-fit p-6">
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
 
-      {/* Display items in the dashboard */}
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {itemInfo.length > 0 ? (
-          itemInfo.map((item, index) => (
-            <div key={index}>
-              <div>
-                {/* <h3>id : {item._id}</h3> */}
-                <h3>Name : {item.name}</h3>
-                <p>Cost Price: {item.costPrice}</p>
-                <p>Quantity: {item.initialQuantity}</p>
-                {/* Add other item details you want to display */}
-              </div>
-              <Link href={`/sellitem/${item._id}`}>Sell</Link>
-            </div>
+          itemInfo.map((item) => (
+            <ItemCard
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              mrp={item.mrp}
+              initialQuantity={item.initialQuantity}
+              dateOfBuying={item.dateOfBuying}
+              expiryDate={item.expiryDate}
+              distributorName={item.distributorName}
+              remainingQuantity={item.remainingQuantity}
+            />
           ))
         ) : (
           <p>No items found.</p>
         )}
-        <Link href="/createitem">Add Item</Link>
       </div>
+
+      <div className="flex w-full justify-between items-center">
+        <Link href="/createitem" className="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded">
+          Add Item
+        </Link>
+        <Link href='/profile' className="mt-4 inline-flex items-center space-x-2 text-blue-500 hover:underline">
+          <span>Go to Profile</span>
+          <FaArrowRightLong />
+        </Link>
+      </div>
+
     </div>
   );
 }

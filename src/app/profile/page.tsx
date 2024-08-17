@@ -1,56 +1,10 @@
 "use client";
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { getUserInfo } from '@/helpers/getUserInfo';
-
-interface UserInfo {
-    name: string;
-    email: string;
-    isVerified: boolean;
-}
 
 function ProfilePage() {
-    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const user: any = await getUserInfo();
-            if (user) {
-                setUserInfo(user);
-            }
-        };
-
-        fetchUser();
-    }, [])
-
-    const router = useRouter();
-    const handleLogout = async () => {
-        try {
-            const response = await axios.post('/api/user/logout')
-            router.push("/login");
-            console.log("Logout Successful", response);
-
-            // Reload the page after logout to update the Navbar
-            window.location.reload();
-        } catch (error: any) {
-            console.log(error.message, "Error in Logging Out");
-        }
-    }
-
+    console.log("HI from profile")
     return (
         <div>
-            <h1>Profile Page</h1>
-            {userInfo && (
-                <div>
-                    <h2>User Details:</h2>
-                    <p><strong>Name:</strong> {userInfo.name}</p>
-                    <p><strong>Email:</strong> {userInfo.email}</p>
-                    <p><strong>Account Verified:</strong> {userInfo.isVerified ? "Yes" : "No"}</p>
-                </div>
-            )}
-
-            <button onClick={handleLogout}>Logout</button>
+             <h2 className="text-2xl font-bold">Profile</h2>
         </div>
     );
 }
