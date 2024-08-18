@@ -14,7 +14,7 @@ function Navbar() {
 
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light");
-    }
+    };
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -31,36 +31,37 @@ function Navbar() {
     }, []);
 
     return (
-        <div className="flex items-center justify-between md:px-6 px-3 md:py-4 py-1 top-0 left-0 z-50 sticky w-full bg-white bg-opacity-30 backdrop-blur-md">
-
-            <div>
-                <RiShoppingCartFill className="md:text-4xl text-2xl text-violet-900" />
+        <nav className="flex items-center justify-between px-4 py-3 md:px-8 md:py-4 bg-white dark:bg-gray-800 dark:bg-opacity-90 bg-opacity-90 backdrop-blur-md sticky top-0 left-0 z-50 shadow-sm">
+            <div className="flex items-center space-x-3">
+                <RiShoppingCartFill className="text-2xl md:text-3xl text-violet-900 dark:text-violet-300" />
+                <Link href="/">
+                    <h1 className="text-lg md:text-2xl font-semibold text-gray-800 dark:text-white">
+                        ShopTrackr
+                    </h1>
+                </Link>
             </div>
 
-            <div className="flex flex-col">
-                <h1 className="text-2xl">ShopTrackr</h1>
-            </div>
+            <div className="flex items-center space-x-6">
+                {/* <button onClick={toggleTheme} aria-label="Toggle Theme" className="text-gray-600 dark:text-gray-300">
+                    {theme === "light" ? (
+                        <FaSun className="text-xl md:text-2xl" />
+                    ) : (
+                        <AiFillMoon className="text-xl md:text-2xl" />
+                    )}
+                </button> */}
 
-            <div className="flex items-center justify-between space-x-3">
-                <button onClick={toggleTheme}>
-                    {
-                        theme === "light" ? <FaSun className="md:text-2xl text-xl" /> : <AiFillMoon className="md:text-2xl text-xl" />
-                    }
-                </button>
                 {isLoggedIn ? (
-                    <div className="flex items-center space-x-3">
-                        <Link href="/profile" className="flex items-center justify-between">
-                            <FaCircleUser className="md:text-2xl text-xl mr-3" />
-                            <p className="hidden md:block">{userName}</p>
-                        </Link>
-                    </div>
+                    <Link href="/profile" className="flex items-center space-x-2 text-gray-800 dark:text-white">
+                        <FaCircleUser className="text-xl md:text-2xl" />
+                        <span className="hidden md:block text-sm md:text-base font-medium">{userName}</span>
+                    </Link>
                 ) : (
-                    <div className="flex items-center space-x-3">
-                        <Link href="/login">Login</Link>
-                    </div>
+                    <Link href="/login" className="text-gray-800 dark:text-white text-sm md:text-base font-medium">
+                        Login
+                    </Link>
                 )}
             </div>
-        </div>
+        </nav>
     );
 }
 

@@ -11,13 +11,12 @@ function SellItemPage({ params }: { params: { id: string } }) {
   });
 
   const id = params.id;
-  // console.log(id)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setSellItemData((prevData) => ({
       ...prevData,
-      [name]: Number(value),
+      [name]: Number(value),  // Convert input to number
     }));
   };
 
@@ -27,8 +26,8 @@ function SellItemPage({ params }: { params: { id: string } }) {
     try {
       const response = await axios.put(`/api/user/sellitem/${id}`, {
         ...sellItemData,
-        soldQuantity: Number(sellItemData.soldQuantity),
-        sellingPrice: Number(sellItemData.sellingPrice),
+        soldQuantity: Number(sellItemData.soldQuantity),  // Ensure it's a number
+        sellingPrice: Number(sellItemData.sellingPrice),  // Ensure it's a number
       });
       console.log("Item sold successfully:", response.data);
       router.push('/dashboard');
@@ -39,44 +38,46 @@ function SellItemPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="min-h-screen min-w-full flex items-center justify-center">
-      <div className='text-center space-y-4 rounded-md shadow-xl p-6 bg-gray-50'>
-        <h1 className="text-4xl font-bold">Sell Item</h1>
+      <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 text-center space-y-4 rounded-md shadow-xl p-6 bg-gray-50">
+        <h1 className="text-3xl font-bold text-gray-900">Sell Item</h1>
         <form onSubmit={handleSellSubmit} className="space-y-4">
           <div className='flex flex-col space-y-3'>
-            <label className="text-2xl font-semibold">Selling Quantity</label>
+            <label className="text-2xl">Selling Quantity</label>
             <input
               type="text"
               name="soldQuantity"
               value={sellItemData.soldQuantity}
               onChange={handleChange}
               required
-              className="text-2xl rounded-md px-2 py-1 focus:outline-none shadow-md"
+              className="focus:outline-none rounded-md shadow-md p-2 text-3xl"
             />
           </div>
           <div className='flex flex-col space-y-3'>
-            <label className="text-2xl font-semibold">Selling Price</label>
+            <label className="text-2xl">Selling Price</label>
             <input
               type="text"
               name="sellingPrice"
               value={sellItemData.sellingPrice}
               onChange={handleChange}
               required
-              className="text-2xl rounded-md px-2 py-1 focus:outline-none shadow-md"
+              className="focus:outline-none rounded-md shadow-md p-2 text-3xl"
             />
           </div>
-          <button
-          onClick={()=>(router.push('/dashboard'))}
-            className="text-xl bg-white text-orange-500 border-orange-500 px-6 py-1 rounded-md shadow-lg mr-2"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="text-xl bg-orange-500 text-white px-6 py-1 rounded-md shadow-lg ml-2"
-          >
-            Sell
-          </button>
-
+          <div className="flex justify-between">
+            <button
+              type="button"
+              onClick={() => router.push('/dashboard')}
+              className="bg-white text-blue-500 px-7 py-2 text-lg rounded-md mr-2"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-7 py-2 text-lg rounded-md ml-2"
+            >
+              Sell
+            </button>
+          </div>
         </form>
       </div>
     </div>
