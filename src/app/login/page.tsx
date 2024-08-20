@@ -70,7 +70,7 @@ function LoginPage() {
                     </div>
                 </form>
                 <p className="text-center text-gray-600">
-                    Don't have an account?{" "}
+                    New User? Creaete account now!
                     <Link href="/signup" className="text-blue-500 hover:text-blue-700">
                         Signup
                     </Link>
