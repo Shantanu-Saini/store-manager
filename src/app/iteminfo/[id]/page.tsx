@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { IoArrowBackSharp } from "react-icons/io5";
+import Link from 'next/link';
 
 interface Item {
     _id: string;
@@ -61,14 +63,10 @@ function ItemInfoPage({ params }: { params: { id: string } }) {
                         </p>
                     )}
                 </div>
-                <div className="flex justify-end mt-6">
-                    <button
-                        onClick={() => router.push('/dashboard')}
-                        className="bg-blue-600 text-white py-2 px-4 rounded shadow hover:bg-blue-700 transition duration-200"
-                    >
-                        Back to Dashboard
-                    </button>
-                </div>
+                <Link href='/dashboard' className="inline-flex items-center space-x-2 text-blue-500 hover:underline">
+                    <IoArrowBackSharp />
+                    <span>Go to Dashborad</span>
+                </Link>
             </div>
         </div>
     );
