@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
         const ownerId = await getTokenData(request);
         console.log("owner id:" + ownerId);
         const items = await ItemModel.find({ ownerId: ownerId });
-        console.log(items);
+        // console.log(items);
         return NextResponse.json(items);
 
     } catch (error) {

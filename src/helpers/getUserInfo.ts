@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getUserInfo = async () => {
+export async function getUserInfo () {
     try {
         const response = await axios.get('/api/user/userinfo');
         if (response.data && response.data.userData) {
