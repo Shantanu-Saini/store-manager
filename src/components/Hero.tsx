@@ -4,7 +4,7 @@ import Link from "next/link";
 function Hero() {
     return (
         <div
-            className="h-screen w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 flex flex-col justify-center items-center"
+            className="min-h-screen w-full bg-animated-gradient flex flex-col justify-center items-center"
         >
             <h1 className="text-4xl font-bold text-white mb-4">{heroData.main}</h1>
             <p className="text-white text-lg">{heroData.sub}</p>

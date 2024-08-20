@@ -32,8 +32,8 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen max-h-fit p-6">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+    <div className="min-h-screen max-h-fit p-6 bg-animated-gradient">
+      <h1 className="text-3xl font-bold mb-6 text-white text-center">Dashboard</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {itemInfo.length > 0 ? (
@@ -56,11 +56,11 @@ function Dashboard() {
       </div>
 
       <div className="flex w-full justify-between items-center">
-        <Link href="/createitem" className="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded">
+        <Link href="/createitem" className="mt-6 inline-block text-white py-2 px-4 rounded border-white border hover:bg-white hover:text-black transition-all divide-purple-300">
           Add Item
         </Link>
-        <Link href='/profile' className="mt-4 inline-flex items-center space-x-2 text-blue-500 hover:underline">
-          <span>Go to Profile</span>
+        <Link href='/profile' className="mt-4 inline-flex items-center space-x-2 text-white">
+          <span className="hover:mr-2 transition-all duration-300">Go to Profile</span>
           <FaArrowRightLong />
         </Link>
       </div>

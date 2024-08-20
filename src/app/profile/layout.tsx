@@ -14,13 +14,13 @@ export default function ProfileLayout({
     history: ReactNode;
 }) {
     return (
-        <div className="min-h-screen bg-gray-100 p-6">
-            <div className="bg-white shadow rounded-lg p-3 mb-6 text-center">
+        <div className="min-h-screen p-6 bg-animated-gradient">
+            <div>
                 {children}
             </div>
-            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-blue-500 hover:underline">
+            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-2">
                 <IoArrowBackSharp />
-                <span>Go to Dashborad</span>
+                <span className="hover:ml-2 transition-all duration-300">Go to Dashborad</span>
             </Link>
             <div className="w-full space-y-6">
                 {/* User and Insights sections */}

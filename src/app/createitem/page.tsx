@@ -62,12 +62,12 @@ const CreateItemPage: React.FC = () => {
     };
 
     return (
-        <div className="min-w-full min-h-screen p-6">
-            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-blue-500 hover:underline">
+        <div className="min-w-full min-h-screen p-6 bg-animated-gradient">
+            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-2">
                 <IoArrowBackSharp />
-                <span>Go to Dashboard</span>
+                <span className="hover:ml-2 transition-all duration-300">Go to Dashborad</span>
             </Link>
-            <div className="w-full p-6 flex flex-col items-center justify-between space-y-4 bg-[#e6e0e0] h-full shadow-lg rounded-md">
+            <div className="w-full p-6 flex flex-col items-center justify-between space-y-4 bg-white h-full shadow-lg rounded-md">
                 <h2 className="text-2xl font-bold text-gray-900">Add Item</h2>
                 <form onSubmit={handleSubmit} className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 px-2">
                     <div className="flex flex-col items-start space-y-2">
@@ -75,7 +75,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="text"
                             name="name"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.name}
                             onChange={handleChange}
                             required
@@ -86,7 +86,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="text"
                             name="distributorName"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.distributorName}
                             onChange={handleChange}
                             required
@@ -97,7 +97,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="text"
                             name="costPrice"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.costPrice}
                             onChange={handleChange}
                             required
@@ -108,7 +108,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="text"
                             name="mrp"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.mrp}
                             onChange={handleChange}
                             required
@@ -119,7 +119,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="text"
                             name="initialQuantity"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.initialQuantity}
                             onChange={handleChange}
                             required
@@ -130,7 +130,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="date"
                             name="dateOfBuying"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.dateOfBuying}
                             onChange={handleChange}
                             required
@@ -141,7 +141,7 @@ const CreateItemPage: React.FC = () => {
                         <input
                             type="date"
                             name="expiryDate"
-                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full"
+                            className="focus:outline-none rounded-md shadow-md p-2 text-xl md:text-3xl w-full bg-gray-100"
                             value={itemData.expiryDate}
                             onChange={handleChange}
                         />

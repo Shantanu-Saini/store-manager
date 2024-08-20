@@ -27,7 +27,7 @@ function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center bg-animated-gradient">
             <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-md shadow-md">
                 <h1 className="text-3xl font-bold text-center text-gray-800">{loginData.title}</h1>
                 <p className="text-center text-gray-600">{loginData.description}</p>

@@ -8,9 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        grape: "var(--grape)"
-      }
+      keyframes: {
+        gradientBackground: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      animation: {
+        gradientBackground: 'gradientBackground 5s ease infinite',
+      },
     },
   },
   plugins: [],

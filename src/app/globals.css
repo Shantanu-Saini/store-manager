@@ -6,11 +6,24 @@ html {
   scroll-behavior: smooth;
 }
 
-@layer base{
-  :root {
-    --grape: #f9847b
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
+
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #8e0000, #252a00, #08004e, #540202);
+  background-size: 400% 400%;
+  animation: gradientBackground 8s ease infinite;
+}
+
 
 /* .dark {
 

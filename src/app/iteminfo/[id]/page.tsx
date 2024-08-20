@@ -40,8 +40,12 @@ function ItemInfoPage({ params }: { params: { id: string } }) {
     }, [id]);
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50">
-            <h1 className="text-4xl font-bold mb-6 text-gray-800">{item?.name}</h1>
+        <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-animated-gradient">
+            <h1 className="text-4xl font-bold mb-6 text-white">{item?.name}</h1>
+            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-2">
+                <IoArrowBackSharp />
+                <span className="hover:ml-2 transition-all duration-300">Go to Dashborad</span>
+            </Link>
             <div className="w-full max-w-4xl bg-white border rounded-lg p-6 shadow-lg">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <p className="text-lg text-gray-600"><strong>Distributor Name:</strong> {item?.distributorName}</p>
@@ -63,10 +67,6 @@ function ItemInfoPage({ params }: { params: { id: string } }) {
                         </p>
                     )}
                 </div>
-                <Link href='/dashboard' className="inline-flex items-center space-x-2 text-blue-500 hover:underline">
-                    <IoArrowBackSharp />
-                    <span>Go to Dashborad</span>
-                </Link>
             </div>
         </div>
     );
