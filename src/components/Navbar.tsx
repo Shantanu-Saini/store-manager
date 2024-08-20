@@ -36,7 +36,7 @@ function Navbar() {
                 <RiShoppingCartFill className="text-2xl md:text-3xl text-violet-900 dark:text-violet-300" />
                 <Link href="/">
                     <h1 className="text-lg md:text-2xl font-semibold text-gray-800 dark:text-white">
-                        ShopTrackr
+                        ShopTrackrr
                     </h1>
                 </Link>
             </div>
