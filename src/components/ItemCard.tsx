@@ -31,8 +31,13 @@ function ItemCard({
       {expiryDate && <p>Expiry Date: {new Date(expiryDate).toLocaleDateString()}</p>}
       <p>Buyer Name: {distributorName}</p>
       <p>Remaining Quantity: {remainingQuantity}</p>
+      {/* sell item */}
       <Link href={`/sellitem/${_id}`} className="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded">
         Sell Item
+      </Link>
+      {/* view full details btn */}
+      <Link href={`/iteminfo/${_id}`} className="mt-6 inline-block bg-white text-blue-500 py-2 px-4 rounded">
+        View Details
       </Link>
     </div>
   );
