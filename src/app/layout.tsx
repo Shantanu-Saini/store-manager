@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Store Manager",
+  title: "ShopTrackrr",
   description: "Manage Your Store like never before",
 };
 
