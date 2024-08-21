@@ -28,8 +28,8 @@ function SellItemPage({ params }: { params: { id: string } }) {
     try {
       const response = await axios.put(`/api/user/sellitem/${id}`, {
         ...sellItemData,
-        soldQuantity: Number(sellItemData.soldQuantity),  
-        sellingPrice: Number(sellItemData.sellingPrice), 
+        soldQuantity: Number(sellItemData.soldQuantity),
+        sellingPrice: Number(sellItemData.sellingPrice),
       });
       console.log("Item sold successfully:", response.data);
       toast.success(response?.data?.message);
@@ -41,31 +41,31 @@ function SellItemPage({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-animated-gradient">
+    <div className="min-h-screen flex items-center justify-center bg-animated-gradient px-3">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold text-center text-gray-800">Sell Item</h1>
         <form onSubmit={handleSellSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="block text-lg font-medium text-gray-700">Selling Quantity</label>
             <input
-              type="number"
+              type="text"
               name="soldQuantity"
               value={sellItemData.soldQuantity}
               onChange={handleChange}
               required
-              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
               placeholder="Enter quantity"
             />
           </div>
           <div className="space-y-2">
             <label className="block text-lg font-medium text-gray-700">Selling Price</label>
             <input
-              type="number"
+              type="text"
               name="sellingPrice"
               value={sellItemData.sellingPrice}
               onChange={handleChange}
               required
-              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
               placeholder="Enter price"
             />
           </div>
