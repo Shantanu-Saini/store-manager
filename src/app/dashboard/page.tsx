@@ -51,7 +51,7 @@ function Dashboard() {
             />
           ))
         ) : (
-          <p>No items found.</p>
+          <p className="text-2xl text-white">No items found.</p>
         )}
       </div>
 
