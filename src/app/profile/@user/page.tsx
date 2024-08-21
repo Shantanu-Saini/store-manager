@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getUserInfo } from '@/helpers/getUserInfo';
+import toast from 'react-hot-toast';
 
 interface UserInfo {
   name: string;
@@ -28,6 +29,7 @@ function UserPage() {
   const handleLogout = async () => {
     try {
       const response = await axios.post('/api/user/logout');
+      toast.success(response?.data?.message);
       router.push("/login");
       console.log("Logout Successful", response);
 
@@ -35,6 +37,7 @@ function UserPage() {
       window.location.reload();
     } catch (error: any) {
       console.log(error.message, "Error in Logging Out");
+      toast.error("Error in loggin out")
     }
   };
 

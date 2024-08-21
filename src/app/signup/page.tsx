@@ -19,6 +19,7 @@ function SignupPage() {
         try {
             const response = await axios.post('/api/user/signup', user);
             console.log("Signup Success", response.data.message);
+            toast.success(response?.data?.message);
             router.push('/login');
         } catch (error: any) {
             console.log("Signup failed", error.response?.data?.message || error.message);

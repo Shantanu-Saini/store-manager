@@ -42,7 +42,7 @@ export async function PUT(request: NextRequest) {
             return NextResponse.json({ error: "Failed to update item" }, { status: 500 });
         }
 
-        return NextResponse.json({ message: "Item updated successfully", updatedItem });
+        return NextResponse.json({ message: "Item Sold Successfully", updatedItem });
     } catch (error) {
         return NextResponse.json(
             { message: "Failed to update item" },

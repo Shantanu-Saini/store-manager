@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 function SellItemPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -30,9 +31,11 @@ function SellItemPage({ params }: { params: { id: string } }) {
         sellingPrice: Number(sellItemData.sellingPrice),  // Ensure it's a number
       });
       console.log("Item sold successfully:", response.data);
+      toast.success(response?.data?.message)
       router.push('/dashboard');
-    } catch (error) {
+    } catch (error: any) {
       console.log("Error selling item:", error);
+      toast.error(error.response?.data?.message);
     }
   };
 

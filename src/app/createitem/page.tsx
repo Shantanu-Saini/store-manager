@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { getUserInfo } from "@/helpers/getUserInfo";
 import Link from "next/link";
 import { IoArrowBackSharp } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 const CreateItemPage: React.FC = () => {
     const [itemData, setItemData] = useState({
@@ -55,9 +56,11 @@ const CreateItemPage: React.FC = () => {
         try {
             const response = await axios.post("/api/user/createitem", dataToSubmit);
             console.log("Create Item success:", response.data.message);
+            toast.success(response?.data?.message);
             router.push("/dashboard");
         } catch (error: any) {
             console.log("Create Item Failed", error.response?.data?.message || "Unknown error");
+            toast.error(error.response?.data?.message);
         }
     };
 
