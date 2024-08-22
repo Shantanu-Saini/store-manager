@@ -64,8 +64,8 @@ function NotificationBell() {
                     </div>
                     <ul className="p-2">
                         {expiringItems.map((item: any) => (
-                            <div className='flex w-full items-center justify-between'>
-                                <li key={item._id} className="text-sm text-gray-800">
+                            <div className='flex w-full items-center justify-between' key={item._id}>
+                                <li className="text-sm text-gray-800">
                                     {item.name} is expiring soon!
                                 </li>
                                 <button onClick={() => handleNotificationRemove(item._id)}>X</button>
