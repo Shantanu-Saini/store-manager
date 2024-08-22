@@ -6,6 +6,7 @@ import { FaSun } from "react-icons/fa";
 import { AiFillMoon } from "react-icons/ai";
 import { FaCircleUser } from "react-icons/fa6";
 import { RiShoppingCartFill } from "react-icons/ri";
+import NotificationBell from "@/components/NotificationBell";
 
 function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,19 +43,25 @@ function Navbar() {
             </div>
 
             <div className="flex items-center space-x-6">
+                {/* Notification Bell */}
+
+                {/* Theme Toggle Button (Optional) */}
                 {/* <button onClick={toggleTheme} aria-label="Toggle Theme" className="text-gray-600 dark:text-gray-300">
                     {theme === "light" ? (
                         <FaSun className="text-xl md:text-2xl" />
-                    ) : (
-                        <AiFillMoon className="text-xl md:text-2xl" />
-                    )}
-                </button> */}
+                        ) : (
+                            <AiFillMoon className="text-xl md:text-2xl" />
+                            )}
+                            </button> */}
 
                 {isLoggedIn ? (
-                    <Link href="/profile" className="flex items-center space-x-2 text-gray-800 dark:text-white">
-                        <FaCircleUser className="text-xl md:text-2xl" />
-                        <span className="hidden md:block text-sm md:text-base font-medium">{userName}</span>
-                    </Link>
+                    <div className="flex items-center space-x-4" >
+                        <NotificationBell />
+                        <Link href="/profile" className="flex items-center space-x-2 text-gray-800 dark:text-white">
+                            <FaCircleUser className="text-xl md:text-2xl" />
+                            <span className="hidden md:block text-sm md:text-base font-medium">{userName}</span>
+                        </Link>
+                    </div>
                 ) : (
                     <Link href="/login" className="text-gray-800 dark:text-white text-sm md:text-base font-medium">
                         Login
