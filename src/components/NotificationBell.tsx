@@ -42,12 +42,11 @@ function NotificationBell() {
     };
 
     const handleNotificationRemove = (itemId: string) => {
-        setExpiringItems(
-            prevItem => (
-                prevItem.filter(item => item._id !== itemId)
-            )
-        )
-    }
+        setExpiringItems((prevItems) =>
+            prevItems.filter((item: { _id: string }) => item._id !== itemId)
+        );
+    };
+
 
     return (
         <div className="relative">
