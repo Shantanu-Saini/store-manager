@@ -1,11 +1,15 @@
 export const footerData = {
     mobile: 18001234567,
-    email: "abc@gmail.com"
+    email: "shantanusaini7000@gmail.com",
+    location : "Uttar Pradesh, India",
+    linkedinUrl: "https://www.linkedin.com/in/shantanu-saini-525a9a27a/",
+    githubUrl: "https://github.com/shantanu-saini",
+    instagramUrl:  "https://www.instagram.com/whoshantanu_"
 }
 
 export const heroData = {
-    main: "Manage Your Store",
-    sub: "Manage your store with ease and efficiency",
+    main: "ShopTrackrr",
+    sub: "ShopTrackrr provides the small shopkeeper a platform where they can manage their inventory online and get the insights of monthly sales. Our Aim is to help the small businesses grow.",
     btn: "Get Started"
 }
 

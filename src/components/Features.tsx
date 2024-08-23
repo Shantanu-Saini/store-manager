@@ -2,19 +2,25 @@ import { featuresData } from "@/variables/pageData";
 
 function Features() {
   return (
-    <div className="w-full flex flex-col items-center py-6 px-6 space-y-4">
-      <h1 className="text-4xl font-bold">Features</h1>
-      <div className="flex flex-col md:flex-row md:space-x-4 w-full">
+    <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Our Features</h2>
+        <p className="mt-4 text-gray-500 sm:text-xl">
+          Discover the benefits that set our service apart.
+        </p>
+      </div>
+
+      <dl className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-3">
         {featuresData.map((feature) => (
-          <div 
-            key={feature.title} 
-            className="bg-white shadow-lg rounded-lg p-6 mb-4 md:mb-0 flex-1 text-center hover:shadow-xl transition-shadow duration-300"
+          <div
+            key={feature.title}
+            className="flex flex-col rounded-lg shadow-md border border-gray-500 bg-gray-50 px-4 py-8 text-center hover:shadow-2xl transition-shadow duration-300"
           >
-            <h2 className="text-2xl font-semibold mb-4">{feature.title}</h2>
-            <p className="text-gray-600">{feature.description}</p>
+            <dt className="text-lg font-medium text-gray-800">{feature.title}</dt>
+            <dd className="mt-2 text-gray-800">{feature.description}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </div>
   );
 }

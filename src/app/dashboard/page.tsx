@@ -32,40 +32,46 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen max-h-fit p-6 bg-animated-gradient">
-      <h1 className="text-3xl font-bold mb-6 text-white text-center">Dashboard</h1>
+    <section className="min-h-screen min-w-full px-4 py-8 sm:px-6 sm:py-12 lg:px-8 bg-gray-100">
+      <header>
+        <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Your Inventory</h2>
+        <p className="mt-4 max-w-md text-gray-500">
+          Explore the items in your inventory and manage them efficiently.
+        </p>
+      </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {itemInfo.length > 0 ? (
           itemInfo.map((item) => (
-            <ItemCard
-              key={item._id}
-              _id={item._id}
-              name={item.name}
-              mrp={item.mrp}
-              initialQuantity={item.initialQuantity}
-              dateOfBuying={item.dateOfBuying}
-              expiryDate={item.expiryDate}
-              distributorName={item.distributorName}
-              remainingQuantity={item.remainingQuantity}
-            />
+            <li key={item._id} className="group block overflow-hidden">
+              <ItemCard
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                mrp={item.mrp}
+                initialQuantity={item.initialQuantity}
+                dateOfBuying={item.dateOfBuying}
+                expiryDate={item.expiryDate}
+                distributorName={item.distributorName}
+                remainingQuantity={item.remainingQuantity}
+              />
+            </li>
           ))
         ) : (
-          <p className="text-2xl text-white">No items found.</p>
+          <p className="text-2xl text-gray-500">No items found.</p>
         )}
-      </div>
+      </ul>
 
-      <div className="flex w-full justify-between items-center">
-        <Link href="/createitem" className="mt-6 inline-block text-white py-2 px-4 rounded border-white border hover:bg-white hover:text-black transition-all divide-purple-300">
+      <div className="flex w-full justify-between items-center mt-8">
+        <Link href="/createitem" className="inline-block text-white py-2 px-4 rounded border border-gray-900 bg-gray-900 hover:bg-gray-700 transition-all">
           Add Item
         </Link>
-        <Link href='/profile' className="mt-4 inline-flex items-center space-x-2 text-white">
+        <Link href='/profile' className="inline-flex items-center space-x-2 text-gray-900 hover:text-gray-700">
           <span className="hover:mr-2 transition-all duration-300">Go to Profile</span>
           <FaArrowRightLong />
         </Link>
       </div>
-
-    </div>
+    </section>
   );
 }
 

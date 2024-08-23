@@ -14,11 +14,11 @@ export default function ProfileLayout({
     history: ReactNode;
 }) {
     return (
-        <div className="min-h-screen p-6 bg-animated-gradient">
+        <div className="min-h-screen p-6 bg-gray-100">
             <div>
                 {children}
             </div>
-            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-2">
+            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-gray-500 mb-2">
                 <IoArrowBackSharp />
                 <span className="hover:ml-2 transition-all duration-300">Go to Dashborad</span>
             </Link>

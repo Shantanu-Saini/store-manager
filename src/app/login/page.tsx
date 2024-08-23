@@ -28,54 +28,75 @@ function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-animated-gradient p-3">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-md shadow-md">
-                <h1 className="text-3xl font-bold text-center text-gray-800">{loginData.title}</h1>
-                <p className="text-center text-gray-600">{loginData.description}</p>
-                <form onSubmit={handleLoginSubmit} className="space-y-6">
+        <div className='px-4 min-w-full min-h-screen bg-gray-100 flex items-center justify-center'>
+            <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-white shadow-lg">
+                <div className="mx-auto max-w-lg text-center">
+                    <h1 className="text-2xl font-bold sm:text-3xl">{loginData.title}</h1>
+                    <p className="mt-4 text-gray-500">{loginData.description}</p>
+                </div>
+
+                <form onSubmit={handleLoginSubmit} className="mx-auto mt-8 max-w-md space-y-4">
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={user.email}
-                            onChange={(e) => setUser({ ...user, email: e.target.value })}
-                            required
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                        />
+                        <label htmlFor="email" className="sr-only">Email</label>
+                        <div className="relative">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={user.email}
+                                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                                required
+                                className="w-full rounded-lg border border-gray-300 p-4 pe-12 text-sm shadow-sm focus:outline-none bg-gray-100"
+                                placeholder="Enter email"
+                            />
+                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="size-4 text-gray-400"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                                    />
+                                </svg>
+                            </span>
+                        </div>
                     </div>
+
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={user.password}
-                            onChange={(e) => setUser({ ...user, password: e.target.value })}
-                            required
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                        />
+                        <label htmlFor="password" className="sr-only">Password</label>
+                        <div className="relative">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={user.password}
+                                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                                required
+                                className="w-full rounded-lg border border-gray-300 p-4 pe-12 text-sm shadow-sm focus:outline-none bg-gray-100"
+                                placeholder="Enter password"
+                            />
+                        </div>
                     </div>
-                    <div>
+
+                    <div className="flex items-center justify-between">
+                        <p className="text-sm text-gray-500">
+                            New User? <Link href="/signup" className="underline">Signup</Link>
+                        </p>
+
                         <button
                             type="submit"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white shadow-md hover:bg-blue-700 hover:scale-x-105 transition-all duration-150"
                         >
                             Login
                         </button>
                     </div>
                 </form>
-                <p className="text-center text-gray-600">
-                    New User? Creaete account now!
-                    <Link href="/signup" className="text-blue-500 hover:text-blue-700">
-                        Signup
-                    </Link>
-                </p>
             </div>
         </div>
     );

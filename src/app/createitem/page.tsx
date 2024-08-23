@@ -68,102 +68,127 @@ const CreateItemPage: React.FC = () => {
     };
 
     return (
-        <div className="min-w-full min-h-screen py-6 px-3 bg-animated-gradient">
-            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-4">
-                <IoArrowBackSharp />
-                <span className="hover:ml-2 transition-all duration-300">Go to Dashboard</span>
-            </Link>
-            <div className="max-w-4xl mx-auto p-6 flex flex-col items-center justify-between space-y-6 bg-white rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-gray-900">Add New Item</h2>
-                <form onSubmit={handleSubmit} className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="name" className="text-lg font-medium">Item Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="distributorName" className="text-lg font-medium">Distributor Name</label>
-                        <input
-                            type="text"
-                            name="distributorName"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.distributorName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="costPrice" className="text-lg font-medium">Cost Price (per item)</label>
-                        <input
-                            type="text"
-                            name="costPrice"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.costPrice}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="mrp" className="text-lg font-medium">MRP (per item)</label>
-                        <input
-                            type="text"
-                            name="mrp"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.mrp}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="initialQuantity" className="text-lg font-medium">Buying Quantity</label>
-                        <input
-                            type="text"
-                            name="initialQuantity"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.initialQuantity}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="dateOfBuying" className="text-lg font-medium">Date of Buying</label>
-                        <input
-                            type="date"
-                            name="dateOfBuying"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.dateOfBuying}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                        <label htmlFor="expiryDate" className="text-lg font-medium">Expiry Date (optional)</label>
-                        <input
-                            type="date"
-                            name="expiryDate"
-                            className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
-                            value={itemData.expiryDate}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="col-span-full">
-                        <button
-                            type="submit"
-                            className={`bg-blue-600 text-white text-lg font-medium rounded-lg p-3 w-full transition duration-200 ${loading ? "opacity-50" : "hover:bg-blue-700"}`}
-                            disabled={loading}
-                        >
-                            {loading ? "Adding Item..." : "Add Item"}
-                        </button>
-                    </div>
-                </form>
+        <section className="bg-gray-100 min-h-screen min-w-full">
+            <div className="px-4 py-16 sm:px-6 lg:px-8">
+                <Link href='/dashboard' className="inline-flex items-center space-x-2 text-gray-600 mb-6">
+                    <IoArrowBackSharp />
+                    <span className="hover:ml-2 transition-all duration-300">Go to Dashboard</span>
+                </Link>
+                <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Add New Item</h2>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="name" className="sr-only">Item Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Item Name"
+                                className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                value={itemData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="distributorName" className="sr-only">Distributor Name</label>
+                                <input
+                                    type="text"
+                                    name="distributorName"
+                                    id="distributorName"
+                                    placeholder="Distributor Name"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.distributorName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="costPrice" className="sr-only">Cost Price</label>
+                                <input
+                                    type="text"
+                                    name="costPrice"
+                                    id="costPrice"
+                                    placeholder="Cost Price (per item)"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.costPrice}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="mrp" className="sr-only">MRP</label>
+                                <input
+                                    type="text"
+                                    name="mrp"
+                                    id="mrp"
+                                    placeholder="MRP (per item)"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.mrp}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="initialQuantity" className="sr-only">Buying Quantity</label>
+                                <input
+                                    type="text"
+                                    name="initialQuantity"
+                                    id="initialQuantity"
+                                    placeholder="Buying Quantity"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.initialQuantity}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="dateOfBuying" className="sr-only">Date of Buying</label>
+                                <input
+                                    type="date"
+                                    name="dateOfBuying"
+                                    id="dateOfBuying"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.dateOfBuying}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="expiryDate" className="sr-only">Expiry Date (optional)</label>
+                                <input
+                                    type="date"
+                                    name="expiryDate"
+                                    id="expiryDate"
+                                    className="w-full rounded-lg border-gray-300 border p-3 text-base focus:outline-none bg-gray-100"
+                                    value={itemData.expiryDate}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="mt-4 flex space-x-4">
+                            <button
+                                onClick={() => router.push('/dashboard')}
+                                className={`inline-block w-full rounded-lg bg-white px-5 py-3 font-medium text-blue-600 border border-blue-600 transition duration-200 ${loading ? "opacity-50" : "hover:bg-gray-100"}`}
+                                disabled={loading}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="submit"
+                                className={`inline-block w-full rounded-lg bg-blue-600 px-5 py-3 font-medium text-white transition duration-200 ${loading ? "opacity-50" : "hover:bg-blue-700"}`}
+                                disabled={loading}
+                            >
+                                {loading ? "Adding Item..." : "Add Item"}
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

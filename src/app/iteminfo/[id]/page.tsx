@@ -39,12 +39,12 @@ function ItemInfoPage({ params }: { params: { id: string } }) {
     }, [id]);
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-3 bg-animated-gradient">
-            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-white mb-4">
+        <div className="min-h-screen flex flex-col items-center justify-center p-3 bg-gray-100">
+            <Link href='/dashboard' className="inline-flex items-center space-x-2 text-gray mb-4">
                 <IoArrowBackSharp />
                 <span className="hover:ml-2 transition-all duration-300">Go to Dashboard</span>
             </Link>
-            <h1 className="text-4xl font-bold mb-6 text-white">{item?.name}</h1>
+            <h1 className="text-4xl font-bold mb-6 text-black">{item?.name}</h1>
             <div className="w-full max-w-4xl bg-white border rounded-lg p-6 shadow-lg">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex items-center">

@@ -82,7 +82,7 @@ function SellItemPage({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-animated-gradient px-3">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-3">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-800">{item?.name}</h1>
@@ -105,7 +105,7 @@ function SellItemPage({ params }: { params: { id: string } }) {
               value={sellItemData.soldQuantity}
               onChange={handleChange}
               required
-              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 p-2 pe-12 text-md shadow-sm focus:outline-none bg-gray-100"
               placeholder={`Enter quantity (Max: ${item?.remainingQuantity})`}
             />
           </div>
@@ -117,7 +117,7 @@ function SellItemPage({ params }: { params: { id: string } }) {
               value={sellItemData.sellingPrice}
               onChange={handleChange}
               required
-              className="w-full p-3 text-xl rounded-md border-2 border-gray-300 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 p-2 pe-12 text-md shadow-sm focus:outline-none bg-gray-100"
               placeholder={`Enter price (Max: Rs. ${item?.mrp.toFixed(2)})`}
             />
           </div>
